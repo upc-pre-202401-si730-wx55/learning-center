@@ -26,7 +26,8 @@
       <template #start>
         <pv-button class="p-button-text text-white" icon="pi pi-bars" @click="toggleDrawer"/>
         <h3>ACME Learning Center</h3>
-        <div class="spacer"></div>
+      </template>
+      <template #end>
         <div class="flex-column">
           <router-link v-for="item in items" :key="item.label" v-slot="{navigate, href}" :to="item.to" custom>
             <pv-button :href="href" class="p-button-text text-white" @click="navigate">{{ item.label }}</pv-button>
@@ -38,8 +39,4 @@
   <pv-sidebar v-model:visible="drawer"/>
   <router-view/>
 </template>
-<style scoped>
-  .spacer {
-    flex: 1 1 auto;
-  }
-</style>
+
