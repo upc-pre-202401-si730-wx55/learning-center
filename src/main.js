@@ -44,7 +44,11 @@ import Textarea         from "primevue/textarea";
 import Toolbar          from "primevue/toolbar";
 import Toast            from "primevue/toast";
 
+// Router
+import router from "./router/index.js";
+
 createApp(App)
+    .use(router)
     .use(PrimeVue, { ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
