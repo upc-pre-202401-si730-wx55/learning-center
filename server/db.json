@@ -29,12 +29,6 @@
       "title": "ASP.NET Code Advanced",
       "description": "What nobody tells you about ASP.NET Core",
       "published": false
-    },
-    {
-      "id": "8fce",
-      "title": "The Vue Master",
-      "description": "The amazing tips and tricks for Vue",
-      "published": true
     }
   ]
 }
