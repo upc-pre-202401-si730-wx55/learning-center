@@ -46,9 +46,15 @@ import Toast            from "primevue/toast";
 
 // Router
 import router from "./router/index.js";
+import {createPinia} from "pinia";
 
+// Create Pinia
+const pinia = createPinia();
+
+// Create App
 createApp(App)
     .use(router)
+    .use(pinia)
     .use(PrimeVue, { ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
