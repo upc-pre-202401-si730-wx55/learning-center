@@ -11,8 +11,8 @@ const router = createRouter({
         { path: '/home', name: 'home', component: HomeComponent, meta: { title: 'Home'}},
         { path: '/tutorials', component: TutorialManagementComponent, meta: { title: 'Tutorials' } },
         { path: '/about', component: AboutComponent, meta: { title: 'About us'}},
-        { path: '/sign-in', component: SignInComponent, meta: { title: 'Sign In'}},
-        { path: '/sign-up', component: SignUpComponent, meta: { title: 'Sign Up'}},
+        { path: '/sign-in', name: 'sign-in', component: SignInComponent, meta: { title: 'Sign In'}},
+        { path: '/sign-up', name: 'sign-up', component: SignUpComponent, meta: { title: 'Sign Up'}},
         { path: '/', redirect: '/home'}
     ]
 });
