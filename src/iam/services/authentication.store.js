@@ -29,22 +29,30 @@ export const useAuthenticationStore = defineStore({
                     console.error(error);
                     router.push({name: 'sign-in'});
                 });
+        },
+        async signUp(signUpRequest, router) {
+            authenticationService.signUp(signUpRequest)
+                .then(response => {
+                    let signUpResponse = new SignUpResponse(response.data.message);
+                    console.log(signUpResponse.message);
+                    this.signedIn = false;
+                    this.userId = 0;
+                    this.username = '';
+                    localStorage.removeItem('token');
+                    router.push({name: 'sign-in'});
+                })
+                .catch(error => {
+                    console.error(error);
+                    router.push({name: 'sign-in'});
+                });
+        },
+        async signOut(router) {
+            this.signedIn = false;
+            this.userId = 0;
+            this.username = '';
+            localStorage.removeItem('token');
+            router.push({name: 'sign-in'});
         }
     },
-    async signUp(signUpRequest, router) {
-        authenticationService.signUp(signUpRequest)
-            .then(response => {
-                let signUpResponse = new SignUpResponse(response.data.message);
-                console.log(signUpResponse.message);
-                this.signedIn = false;
-                this.userId = 0;
-                this.username = '';
-                localStorage.removeItem('token');
-                router.push({name: 'sign-in'});
-            })
-            .catch(error => {
-                console.error(error);
-                router.push({name: 'sign-in'});
-            });
-    }
+
 });
