@@ -1,10 +1,18 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHistory, Router } from "vue-router";
 import HomeComponent from "../public/pages/home.component.vue";
 import AboutComponent from "../public/pages/about.component.vue";
 import TutorialManagementComponent from "../learning/pages/tutorial-management.component.vue";
 import SignInComponent from "../iam/pages/sign-in.component.vue";
 import SignUpComponent from "../iam/pages/sign-up.component.vue";
+import {titleBrandingGuard} from "../shared/services/title-branding.guard.js";
+import {authenticationGuard} from "../iam/services/authentication.guard.js";
 
+/**
+ * Router
+ * @summary
+ * The router is responsible for managing the application's navigation.
+ * @type {Router}
+ */
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -18,9 +26,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    let baseTitle = 'ACME Learning Center';
-    document.title = `${baseTitle} | ${to.meta['title']}`;
-    next();
+    // Call the title branding guard
+    titleBrandingGuard(to, from, next);
+    // Call the authentication guard
+    authenticationGuard(to, from, next);
 });
 
 export default router;
