@@ -11,7 +11,8 @@ export const useAuthenticationStore = defineStore({
     getters: {
         isSignedIn: (state) => state['signedIn'],
         currentUserId: (state) => state['userId'],
-        currentUsername: (state) => state['username']
+        currentUsername: (state) => state['username'],
+        currentToken: () => localStorage.getItem('token')
     },
     actions: {
         async signIn(signInRequest, router) {
